@@ -1,0 +1,24 @@
+{
+  "name": "uta-movie-database",
+  "version": "1.0.0",
+  "description": "In this mini-project, you will build Rest API routes for creating, retrieving, and deleting movies from a MySQL database.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonnorsworthy/uta-movie-database.git"
+  },
+  "author": "Brandon Norsworthy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brandonnorsworthy/uta-movie-database/issues"
+  },
+  "homepage": "https://github.com/brandonnorsworthy/uta-movie-database#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5"
+  }
+}
