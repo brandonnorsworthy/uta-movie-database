@@ -57,18 +57,19 @@ app.post('/api/add-movie', (req, res) => {
   });
 })
 
-app.post('/api/update-review', (req, res) => {
-  db.query(`DELETE FROM movies WHERE id = ?;`, (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: rows
-    });
-  });
-})
+// app.post('/api/update-review', (req, res) => {
+//   //SELECT id FROM movies WHERE movie_name = "Indiana Jones"
+//   db.query(`FROM movies SELECT WHERE id = ?;`, (err, rows) => {
+//     if (err) {
+//       res.status(500).json({ error: err.message });
+//       return;
+//     }
+//     res.json({
+//       message: 'success',
+//       data: rows
+//     });
+//   });
+// })
 
 app.delete('/api/movie/:id', (req, res) => {
   db.query(`DELETE FROM movies WHERE id = ?;`, req.params.id, (err, rows) => {
