@@ -8,7 +8,7 @@ CREATE TABLE movies (
   movie_name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE review (
+CREATE TABLE reviews (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   movie_id INT,
   review TEXT NOT NULL,
