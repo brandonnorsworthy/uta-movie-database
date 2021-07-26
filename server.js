@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Express middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Connect to database
@@ -35,7 +35,7 @@ app.get('/api/movies', (req, res) => {
   db.query(sql, (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
-       return;
+      return;
     }
     res.json({
       message: 'success',
@@ -45,11 +45,36 @@ app.get('/api/movies', (req, res) => {
 });
 
 app.post('/api/add-movie', (req, res) => {
-  const sql = `INSERT INTO movies (movie_name) VALUES ("${req.body.name}")`;
-  db.query(sql, (err, rows) => {
+  db.query(`INSERT INTO movies (movie_name) VALUES ("${req.body.name}")`, (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
-       return;
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+})
+
+app.post('/api/update-review', (req, res) => {
+  db.query(`DELETE FROM movies WHERE id = ?;`, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+})
+
+app.delete('/api/movie/:id', (req, res) => {
+  db.query(`DELETE FROM movies WHERE id = ?;`, req.params.id, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
     }
     res.json({
       message: 'success',
