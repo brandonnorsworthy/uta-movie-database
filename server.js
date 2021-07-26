@@ -44,6 +44,20 @@ app.get('/api/movies', (req, res) => {
   });
 });
 
+app.post('/api/add-movie', (req, res) => {
+  const sql = `INSERT INTO movies (movie_name) VALUES ("${req.body.name}")`;
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+       return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+})
+
 // Default response for any other request (Not Found)
 app.use((req, res) => {
   console.log("404");
